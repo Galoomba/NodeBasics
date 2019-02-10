@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "_comment":"***** to run the project by npm >> npm start  *****",
-    "start": "node server.js",
-    "_comment2":"***** to run the project by npm special script >> npm run start-server  *****",
+    "_comment": "***** to run the project by npm >> npm start  *****",
+    "start": "nodemon server.js",
+    "_comment2": "***** to run the project by npm special script >> npm run start-server  *****",
     "start-server": "node server.js"
   },
   "repository": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Galoomba/NodeBasics/issues"
   },
-  "homepage": "https://github.com/Galoomba/NodeBasics#readme"
+  "homepage": "https://github.com/Galoomba/NodeBasics#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
