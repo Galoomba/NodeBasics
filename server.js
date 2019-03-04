@@ -16,6 +16,8 @@ const shopRouter =require('./routes/shop')
 const app = express()
 //add the parser to parse urlencodes 
 app.use(podyParser.urlencoded({extended:false}))
+//make a static dir to contian our css files 
+app.use(express.static(path.join(__dirname,'public')))
 app.use('/admin',adminRouter) 
 app.use(shopRouter) 
 //add 404 error when enter wrong endpoint
