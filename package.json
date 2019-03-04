@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "_comment": "***** to run the project by npm >> npm start  *****",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "_comment2": "***** to run the project by npm special script >> npm run start-server  *****",
-    "start-server": "node server.js"
+    "start-server": "nodemon server.js"
   },
   "repository": {
     "type": "git",

@@ -6,15 +6,23 @@
 
 // import the http module 
 const http = require('http')
-//import the routes module
-const routes= require('./routes')
-//creating the server object
-//the arrow function has to prama 
-// @ request - handle the server requests 
-// @ response - Handle the server response
+//import the Express.js module
+const express = require('express')
+// init a express object handling creating server logic 
+const app = express()
 
-const server = http.createServer(routes.handler)
-   //calling the routes.handler function ^^
+//using the use function to init logic 
+// the @next prama recive a function that will be send to the use function after that one 
+app.use( (request,response,next)=>{
+   console.log('hii')
+   next()// Allow the request to travel to the next middleware in line 
+})
+
+app.use((request,response,next)=>{
+   console.log('hi back')
+})
+const server = http.createServer(app)
+   //creating server logic 
 
    
 //keep the server on and listening to requests 
