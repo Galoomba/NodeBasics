@@ -1,11 +1,13 @@
 const express =require ('express')
+const path =require('path')
+const rootDir =require('../utils/path')
+
 const router = express.Router()
 
 //using the use function to init logic 
 // the @next prama recive a function that will be send to the use function after that one 
-router.get('/dock',(request,response,next)=>{
-    response.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>')//use express send methode to send html response 
-    // we never use next here as they are indpendent endpoints 
+router.get('/product',(request,response,next)=>{
+response.sendFile(path.join(rootDir,"views","add-product.html"))    // we never use next here as they are indpendent endpoints 
  })
    
  //app.post and app.get are the same as app.use but to spicify the method wither post or get
