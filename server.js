@@ -17,5 +17,9 @@ const app = express()
 app.use(podyParser.urlencoded({extended:false}))
 app.use(adminRouter) 
 app.use(shopRouter) 
+//add 404 error when enter wrong endpoint
+app.use((req,res,next)=>{
+   res.status(404).send("<h1> 404 ERROR WRONG ENDPOINT </h1>")
+})
 //init the server, Now we have no need for requiring http module 
 app.listen(3000)
