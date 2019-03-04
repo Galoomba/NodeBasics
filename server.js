@@ -10,15 +10,18 @@ const podyParser=require('body-parser')
 // init a express object handling creating server logic 
 const app = express()
 //add the parser to parse urlencodes 
-app.use(podyParser.urlencoded())
+app.use(podyParser.urlencoded({extended:false}))
 //using the use function to init logic 
 // the @next prama recive a function that will be send to the use function after that one 
 app.use('/dock',(request,response,next)=>{
    response.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>')//use express send methode to send html response 
    // we never use next here as they are indpendent endpoints 
 })
-app.use('/product',(request,response,next)=>{
+
+//app.post and app.get are the same as app.use but to spicify the method wither post or get
+app.post('/product',(request,response,next)=>{
    console.log(request.body)
+   response.redirect('/')
 })
 app.use('/',(request,response,next)=>{
    response.send('<h1> ON RESPONSE!! </h1>')//use express send methode to send html response 
