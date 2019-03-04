@@ -7,25 +7,15 @@
 const express = require('express')
 // import a body parser to parse respond body 
 const podyParser=require('body-parser')
-// init a express object handling creating server logic 
+
+//Require a router objects from the routers folder
+const adminRouter =require('./routes/admin')
+const shopRouter =require('./routes/shop')
+
 const app = express()
 //add the parser to parse urlencodes 
 app.use(podyParser.urlencoded({extended:false}))
-//using the use function to init logic 
-// the @next prama recive a function that will be send to the use function after that one 
-app.use('/dock',(request,response,next)=>{
-   response.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>')//use express send methode to send html response 
-   // we never use next here as they are indpendent endpoints 
-})
-
-//app.post and app.get are the same as app.use but to spicify the method wither post or get
-app.post('/product',(request,response,next)=>{
-   console.log(request.body)
-   response.redirect('/')
-})
-app.use('/',(request,response,next)=>{
-   response.send('<h1> ON RESPONSE!! </h1>')//use express send methode to send html response 
-})
-
+app.use(adminRouter) 
+app.use(shopRouter) 
 //init the server, Now we have no need for requiring http module 
 app.listen(3000)
